@@ -26,7 +26,7 @@ const Header = () => {
     </div>
 )
 }
-const FunFacts = () => {    //renamed this
+const FunFacts = () => {   
     return (
     <div id="Facts">
         <h1>Fun facts about React</h1>
