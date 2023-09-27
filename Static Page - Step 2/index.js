@@ -19,12 +19,12 @@ const Logo = () => <img src="./react-logo.png" id="react-logo" />
 const Header = () => {
     return (
     <div id="Header">
-        <Header>
+        <header>
         <nav>
             {/* <Logo /> */} 
             <h1>What I'm Stoked For in Learning React</h1>
         </nav>
-        </Header>
+        </header>
     </div>
 )
 }
