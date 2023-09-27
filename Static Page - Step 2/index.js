@@ -18,9 +18,9 @@ Part 2:
 const Logo = () => <img src="./react-logo.png" id="react-logo" />
 const Header = () => {
     return (
-    <div>
+    <div id="Header">
         <nav>
-            <Logo />
+            {/* <Logo /> */} 
             <h1>What I'm Stoked For in Learning React</h1>
         </nav>
     </div>
@@ -28,7 +28,7 @@ const Header = () => {
 }
 const FunFacts = () => {    //renamed this
     return (
-    <div>
+    <div id="Header">
         <h1>Fun facts about React</h1>
         <ul>
             <li>Was first released in 2013</li>
@@ -41,12 +41,25 @@ const FunFacts = () => {    //renamed this
     )
 }
 
-const reactPage = ( 
-    <div>
-        <Header />
-        <FunFacts />
-
+const Footer = () => {
+    return (
+    <div id="footer">
+        <footer>© 2023 Chris Waters development. All rights reserved.
+        </footer>
     </div>
+    )
+}
+
+const reactPage = ( 
+   <div>
+        <div id="contentContainer">
+            <Logo />
+            <Header />
+            <FunFacts />
+            
+        </div>
+        <Footer />
+    </div>       
 )
 
 
