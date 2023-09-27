@@ -10,7 +10,7 @@ This assignment was to build upon the previous exercise ('Static Page - Step 1')
     "© 20xx <last name here> development. All rights reserved."
 
 The scrimba lesson doesn't use any custom components and just builds out the whole page in one unit like this:
-function Page() {
+`function Page() {
     return (
         <div>
             <header>
@@ -30,10 +30,10 @@ function Page() {
             </footer>
         </div>
     )
-}
+}`
 
 I wanted to continue to practice using my own components and breaking the site down into individually rendered sections, so I created Logo, Header, Fun Facts, and Footer components and then put them into my page like this:
-const reactPage = ( 
+`const reactPage = ( 
    <div>
         <div id="contentContainer">
             <Logo />
@@ -43,6 +43,6 @@ const reactPage = (
         </div>
         <Footer />
     </div>       
-)
+)`
 
 This broke the rules slightly because I rendered the logo separately from the Header section.  But I did this because I wanted to arrange the sections using CSS grid.  I wanted to create a sidebar area where the logo would live and then have the content be more or less centered, all in one big column.  I wanted the footer to be separate from the grid so I put it in a div outside the container div for the rest of the site.
