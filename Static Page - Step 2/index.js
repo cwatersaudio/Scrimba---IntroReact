@@ -19,16 +19,18 @@ const Logo = () => <img src="./react-logo.png" id="react-logo" />
 const Header = () => {
     return (
     <div id="Header">
+        <Header>
         <nav>
             {/* <Logo /> */} 
             <h1>What I'm Stoked For in Learning React</h1>
         </nav>
+        </Header>
     </div>
 )
 }
 const FunFacts = () => {    //renamed this
     return (
-    <div id="Header">
+    <div id="Facts">
         <h1>Fun facts about React</h1>
         <ul>
             <li>Was first released in 2013</li>
