@@ -13,8 +13,8 @@ Hints:
   just like in HTML. In the slide, I have it set to 40px
  */
 
-import React from "react"
-import ReactDOM from "react-dom"
+// import React from "react"
+// import ReactDOM from "react-dom"
 
 const Logo = () => <img src="./react-logo.png" id="react-logo" />
 const PageContent = () => {    //tried incorporating arrow functions in this one
