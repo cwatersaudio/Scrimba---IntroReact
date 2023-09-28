@@ -8,24 +8,26 @@ Challenge:
 // import React from "react"
 // import ReactDOM from "react-dom"
 
+// import Header from "./Header.js"
+
 const Logo = () => <img src="./react-logo.png" id="react-logo" />
-const Header = () => {
-    return (
-    <div id="Header">
-        <header>
-            <nav className="nav">
-                <Logo />
-                <ul id="Navbar">
-                    <li>Pricing</li>
-                    <li>About</li>
-                    <li>Contact</li>
-                </ul>
-            </nav>
-        <h1>What I'm Stoked For in Learning React</h1>
-        </header>
-    </div>
-)
-}
+// const Header = () => {
+//     return (
+//     <div id="Header">
+//         <header>
+//             <nav className="nav">
+//                 <Logo />
+//                 <ul id="Navbar">
+//                     <li>Pricing</li>
+//                     <li>About</li>
+//                     <li>Contact</li>
+//                 </ul>
+//             </nav>
+//         <h1>What I'm Stoked For in Learning React</h1>
+//         </header>
+//     </div>
+// )
+// }
 const FunFacts = () => {   
     return (
     <div id="Facts">
@@ -53,7 +55,7 @@ const Footer = () => {
 const reactPage = ( 
    <div>
         <div id="contentContainer">
-            <Header />
+            {/* <Header /> */}
             <FunFacts />
             
         </div>
