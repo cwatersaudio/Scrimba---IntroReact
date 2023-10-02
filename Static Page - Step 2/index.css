@@ -1,0 +1,28 @@
+html, body {
+    margin: 0;
+    padding: 10px;
+}
+
+#react-logo {
+    width: 100px;
+    grid-column-start: 1;
+}
+
+#contentContainer {
+    display:grid;  /* wanted to practice using CSS grid to arrnage the elements */
+    grid-template-columns: 1fr 8fr;
+    grid-template-rows:min-content;
+}
+
+#Header {
+    grid-column-start: 2;
+}
+
+#Facts {
+    grid-column-start: 2;
+}
+
+#footer {
+    font-size: .75rem;
+    
+}

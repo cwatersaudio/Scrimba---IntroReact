@@ -1,0 +1,4 @@
+The JS/JSX of this remains essentially the same as the Step 2 project, aside from adding a navbar and reconfiguring the display properties of the elements (goodbye CSS grid).  Did some restyling of the page in CSS and learned how to use a custom typeface.  Couldn't figure out how to link to the font --> had to download it and host it locally in the project folder...  Would like to figure out liking to a font later
+
+*Update*
+Combining this with next step of process in which individual React components are separated into their own files.  Having trouble getting this to work in my local environment vs on the scrimba site

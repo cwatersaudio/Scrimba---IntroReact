@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Fjalla One";
+    src: url("./FjallaOne-Regular.ttf");
+ }
+
+* {
+    font-family: "Fjalla One";
+
+}
+
+html, body {
+    margin: 0;
+    padding: 10px;
+}
+
+#react-logo {
+    width: 60px;
+    
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 10px 5px grey ;
+    border-radius: 10px;
+}
+
+
+
+#footer {
+    font-size: .75rem;
+    border-radius: 10px;
+    background-color: rgb(195, 195, 195);
+    padding: 3px;
+    display:inline-block;
+}
+
+#Navbar {
+    width: 200px;
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+
+}

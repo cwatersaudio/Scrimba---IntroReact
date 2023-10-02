@@ -1,28 +1,18 @@
-# co9da4467a577054db46cd1f8
-
-Quick start:
-
+This was the assigment from scrimba:
 ```
-$ yarn # npm install
-$ yarn build # npm run build
-````
+Challenge: Starting from scratch, build and render the 
+HTML for our section project. Check the Google slide for 
+what you're trying to build.
 
-## Development
+We'll be adding styling to it later.
 
-Run Webpack in watch-mode to continually compile the JavaScript as you work:
-
+Hints:
+* The React logo is a file in the project tree, so you can
+  access it by using `src="./react-logo.png" in your image
+  element
+* You can also set the `width` attribute of the image element
+  just like in HTML. In the slide, I have it set to 40px
+ */
 ```
-$ yarn watch # npm run watch
-```
 
-## About Scrimba
-
-At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
-If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding, regardless of where they live and the size of their wallets 🎉
-The Frontend Developer Career Path aims to teach you everything you need to become a Junior Developer, or you could take a deep-dive with one of our advanced courses 🚀
-
-- [Our courses](https://scrimba.com/allcourses)
-- [The Frontend Career Path](https://scrimba.com/learn/frontend)
-- [Become a Scrimba Pro member](https://scrimba.com/pricing)
-
-Happy Coding!
+Fairly straightforward... I used custom components rather than coding out the whole site in one JSX unit (still figuring out the terminology --what's a JSX function called?  A Component?).  Figured out how to style a React element with CSS; used arrow functions instead of named functions.
