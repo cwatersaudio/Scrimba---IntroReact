@@ -1,3 +1,47 @@
 * {
   font-family: 'Inter', sans-serif;
 }
+
+#nav-container {
+  background-color: #21222A;
+  margin-bottom: 0;
+ 
+
+
+}
+
+#nav-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #DEEBF8;
+  padding: 27px;
+  height: 91px;
+  width: auto;
+  
+
+}
+
+#nav-left {
+  color: #61DAFB;
+  display: flex;
+  align-items: center;
+}
+
+#nav-left img {
+  height: 28.93px;
+  width: 28.93px;
+  justify-content: center;
+}
+
+#facts-container {
+  background-color: #282D35;
+  height: 459px;
+  width: auto;
+  margin-top: 0px;
+}
+
+#facts-content {
+  color:#FFF;
+  font-size: 16px;
+}

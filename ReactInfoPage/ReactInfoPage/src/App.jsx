@@ -20,14 +20,23 @@ Challenge: Project setup
   works if you haven't done it before)
 */
 
-
-
-
-
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import MainPage from './components/MainPage'
+import Navbar from './components/Navbar'
 
+function App() {
+  
 
+  return (
+    <>
+      <Navbar />
+      <MainPage />
+      <h1>Hello</h1>
+    </>
+
+  )   
+}
 
 export default App
