@@ -37,7 +37,7 @@ const MainPage = () => {
                         <li ClassName="list-item"><span>Was originally created by Jordan Walke</span></li>
                         <li ClassName="list-item"><span>Has well over 100k stars on GitHub</span></li>
                         <li ClassName="list-item"><span>Is maintained by Facebook</span></li>
-                        <li ClassName="list-item"><span>Powers thousands of enterprise apps, <br></br>including mobile apps</span></li>
+                        <li ClassName="list-item"><span>Powers thousands of enterprise apps, including mobile apps</span></li>
                     </ul>
                     
                 </div>    
