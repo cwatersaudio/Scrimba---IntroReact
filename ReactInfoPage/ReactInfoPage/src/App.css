@@ -51,12 +51,28 @@ h4 {
   font-size: 16px;
 }
 
+#fact-list {
+  margin-top: 46px;
+  /* display:flex; */
+  align-items: center;
+}
+
 #facts-content ul  {
   font-weight: 400;
   line-height: 200%;
+  list-style: none;
+  
 }
 
 .list-item {
   padding: 20px auto;
-  
+   
+}
+
+li::before {
+  content: "";
+  background: #61DAFB;
+  border-radius: 1ch;
+  padding-inline: 9.60px;
+  margin-inline-end: 13.39px;
 }
