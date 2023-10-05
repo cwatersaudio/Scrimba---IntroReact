@@ -33,7 +33,6 @@ function App() {
     <>
       <Navbar />
       <MainPage />
-      <h1>Hello</h1>
     </>
 
   )   
