@@ -1,7 +1,7 @@
 export default function Navbar () {
     return (
         <>
-            <div id="nav-container">
+            <nav id="nav-container">
                 <div id="nav-contents">
                     <div id="nav-left">
                         <img src="./src/assets/react-logo.png" alt="React logo" />
@@ -12,9 +12,7 @@ export default function Navbar () {
                     </div>
                 </div>
             
-            
-            
-            </div>
+            </nav>
         
         </>    
     )
