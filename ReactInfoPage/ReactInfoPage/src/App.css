@@ -48,37 +48,53 @@ h4 {
   width: auto;
   margin-top: 0px;
   padding: 30px;
+  display: flex;
+  flex-direction: row;
+  background-image: url(./assets/Group.svg);
+  background-repeat: no-repeat;
+  background-position: right center;
 }
 
 #facts-content {
   color:#FFF;
   font-size: 16px;
-  border: 5px solid green;
+  z-index: 0;
+  position: relative;
 }
 
 #fact-list {
   margin-top: 46px;
   display:block;
   align-items: center;
+  max-width: 400px;
 }
 
 #facts-content ul  {
   font-size: 16px;
   font-weight: 400;
   line-height: 200%;
-  list-style: none;  
+  /* list-style: none;   */
 }
 
-.list-item {
-  /* padding: 20px auto; */
-   
+#facts-content li::marker {
+  font-size: 1.5rem;
+  color: #61DAFB;
 }
 
-li::before {
-  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+
+
+/* li::before {
+  content: "\2022";  
   color: #61DAFB; 
-  display: inline-block; /* Needed to add space between the bullet and the text */ 
+  display: inline-block; 
   font-size:x-large;
-  width: 1em; /* Also needed for space (tweak if needed) */
+  width: 1em; 
   margin-left: -1em;
+} */
+
+#bgd-logo {
+  margin: 127px 0px 109px 423px;
+  z-index: 2;
+  position:fixed;
+
 }
