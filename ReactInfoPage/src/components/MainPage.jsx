@@ -1,21 +1,3 @@
-// export default function MainPage () {
-//     return (
-//         <>
-//             <div id="facts-container">
-//                 <div id="facts-content">
-//                     <h1>Fun facts about React</h1>
-
-//                 </div>
-            
-//             </div>
-        
-//         </>
-
-
-//     )
-
-// }
-
 // MY PRIOR CODE
 
 const MainPage = () => {   
