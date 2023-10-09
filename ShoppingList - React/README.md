@@ -1,0 +1,1 @@
+Trying to complete a JS exercise in the scrimba intro to JS course using React instead of vanilla javascript.
