@@ -10,7 +10,14 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <Card />
+      <Card 
+      img="./src/assets/katie-zaferes.png"
+      rating= {5}
+      review={6}
+      country="USA"
+      title="Life lessons with Katie Zaferes"
+      price={136}
+      />
     </>
   )
 }

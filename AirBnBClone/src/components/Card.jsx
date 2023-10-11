@@ -13,17 +13,17 @@
 // */
 
 
-function Card () {
+function Card ({img,rating,review,country,title,price}) {
     return (
         <>
             <div className="card-container">
-                <img src="./src/assets/katie-zaferes.png" alt="photo of kate zaferes by the pool" className="card-image" />
+                <img src={img} alt="photo of kate zaferes by the pool" className="card-image" />
                 <div className="card-rating">
                     <img src="./src/assets/star.png" alt="star"  className="star-image"/>
-                    <p>5.0<span className="review-num">(6)·USA</span></p>
+                    <p>{rating} <span className="review-num">({review}) · {country}</span></p>
                 </div>
-                <p>Life lessons with Katie Zaferes</p>
-                <p><span className="bold">From $136</span> / person</p>
+                <p>{title}</p>
+                <p><span className="bold">From ${price}</span> / person</p>
 
             </div>
         
