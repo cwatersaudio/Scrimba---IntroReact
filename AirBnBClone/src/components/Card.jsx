@@ -23,7 +23,7 @@ function Card () {
                     <p>5.0<span className="review-num">(6)·USA</span></p>
                 </div>
                 <p>Life lessons with Katie Zaferes</p>
-                <p><span className="price">From $136</span> / person</p>
+                <p><span className="bold">From $136</span> / person</p>
 
             </div>
         
