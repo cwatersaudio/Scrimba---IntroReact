@@ -54,5 +54,46 @@ h4 {
     display: flex;
     flex-direction: column;
     width: 347px;
+}
 
+.card-container {
+    display: flex;
+    flex-direction: column;
+    /* width: 176px */
+    color: #222;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    /* column-gap: 8px; */
+    padding: 33px;
+}
+
+.card-image {
+    width:176px;
+    border-radius: 9px;
+}
+
+.card-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.star-image {
+    height:14px;
+}
+
+.price {
+    color: #222;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+}
+.card-container p {
+    margin: 2px;
+}
+
+.review-num {
+    color: #918E9B;
 }
