@@ -2,7 +2,7 @@ function Hero () {
     return (
         <>
             <div id="hero-container">
-                <img src="./src/assets/photo-grid.png" alt="photos of experiences" id="static-collage"/>
+                <img src="./images/photo-grid.png" alt="photos of experiences" id="static-collage"/>
                 
                 <div id="hero-text-container">
                 <h1>Online Experiences</h1>

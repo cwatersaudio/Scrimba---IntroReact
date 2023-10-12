@@ -19,7 +19,7 @@ function Card ({img,rating,review,country,title,price}) {
             <div className="card-container">
                 <img src={img} alt="photo of kate zaferes by the pool" className="card-image" />
                 <div className="card-rating">
-                    <img src="./src/assets/star.png" alt="star"  className="star-image"/>
+                    <img src="./images/star.png" alt="star"  className="star-image"/>
                     <p>{rating} <span className="review-num">({review}) · {country}</span></p>
                 </div>
                 <p>{title}</p>

@@ -95,3 +95,8 @@ h4 {
 .review-num {
     color: #918E9B;
 }
+
+#cards-container {
+display: flex;
+
+}
