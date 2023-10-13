@@ -14,9 +14,17 @@
 
 
 function Card ({img,rating,review,country,title,price}) {
+    let badgeText
+    if (props.openSpots === 0) {
+        badgeText = "SOLD OUT"
+    } else if (props.location === "Online") {
+        badgeText = "ONLINE"
+    }
+    
     return (
         <>
             <div className="card-container">
+                {badgeText && <div className="card--badge">{badgeText}</div>}
                 <img src={img} alt="photo of kate zaferes by the pool" className="card-image" />
                 <div className="card-rating">
                     <img src="./images/star.png" alt="star"  className="star-image"/>
