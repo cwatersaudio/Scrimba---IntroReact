@@ -1,12 +1,12 @@
 
 
 function Card ({img,rating,review,title,price,id,openSpots,location }) {
-    let badgeText ="Hello";
-    // if (openSpots === 0) {
-    //     badgeText = "SOLD OUT"
-    // } else if (location === "Online") {
-    //     badgeText = "ONLINE"
-    // }
+    let badgeText ="";
+    if (openSpots === 0) {
+        badgeText = "SOLD OUT"
+    } else if (location === "Online") {
+        badgeText = "ONLINE"
+    }
     
     return (
         <>
