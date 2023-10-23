@@ -10,7 +10,7 @@ function App() {
     return(
     <Card 
         key={item.id}
-        item={item}
+        {...item} //spreading  object passed as props
     />
     )
 

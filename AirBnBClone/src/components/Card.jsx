@@ -2,7 +2,7 @@
 
 function Card (props) {
     
-    const {coverImg,description,title,price,id,openSpots,location} = props.item;
+    const {coverImg,description,title,price,id,openSpots,location} = props //so by spreading the object passed as props, I can omit the .item
     let badgeText ="";
     if (openSpots === 0) {
         badgeText = "SOLD OUT"
