@@ -1,6 +1,8 @@
 
 
-function Card ({img,rating,review,title,price,id,openSpots,location }) {
+function Card (props) {
+    
+    const {coverImg,description,title,price,id,openSpots,location} = props.item;
     let badgeText ="";
     if (openSpots === 0) {
         badgeText = "SOLD OUT"
@@ -12,12 +14,12 @@ function Card ({img,rating,review,title,price,id,openSpots,location }) {
         <>
             <div className="card-container">
                 <div className="card--badge">{badgeText}</div>
-                <img src={img} alt="" className="card-image" />
+                <img src={coverImg} alt="" className="card-image" />
                 <div className="card-rating">
                     <img src="./images/star.png" alt="star"  className="star-image"/>
-                    <p>{rating} <span className="review-num">({review}) · {location}</span></p>
                 </div>
-                <p>{title}</p>
+                <p className="bold">{title}</p>
+                <p>{description}</p>
                 <p><span className="bold">From ${price}</span> / person</p>
 
             </div>
