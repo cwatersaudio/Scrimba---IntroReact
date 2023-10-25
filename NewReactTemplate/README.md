@@ -1,0 +1,1 @@
+This is a blank template for making a React page with Vite, based on the default vite template but with all the styling and boilerplate code removed.
