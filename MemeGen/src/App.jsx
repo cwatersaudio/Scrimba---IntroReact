@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from './components/Header'
+import Input from './components/Input'
 import './App.css'
 
 function App() {
@@ -9,6 +10,8 @@ function App() {
     <>
       <main>
         <Header />
+        <Input />
+
 
 
       </main>

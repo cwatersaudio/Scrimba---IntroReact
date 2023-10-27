@@ -2,12 +2,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Karla:wght@700&display=swap');
 
 
+
 body {
     width: 550px;
 }
 
 nav {
     font-family: Inter,sans-serif;
+}
+
+input {
+    border-radius: 5px;
+    border: 1px solid #D5D4D8;
+    height: 35px;
+}
+
+button {
+    color: #FFF;
+    text-align: center;
+    font-family: Karla;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    height:40px;
+    /* letter-spacing: -1.6px; */
 }
 
 /* Header Styles */
@@ -50,3 +69,22 @@ nav {
     padding: 25px 37px;
 }
 
+/* Input Section Styling */
+
+#input-container {
+    display: grid;
+    grid-template-rows: 40px 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px;
+    margin: 36px;
+}
+
+#meme-button {
+    grid-row-start: 2;
+    grid-column: 1/ span 2;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #711F8D 1.14%, #A818DA 100%);
+    text-align: center;
+    height: 40px;
+    
+}
