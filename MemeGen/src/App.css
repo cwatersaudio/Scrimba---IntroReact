@@ -10,7 +10,7 @@ nav {
     font-family: Inter,sans-serif;
 }
 
-
+/* Header Styles */
 
 #header-navbar {
     background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
@@ -21,6 +21,14 @@ nav {
     align-items: center;
 }
 
+#header-navbar img {
+    justify-self: center;
+    margin-right: 10px;;
+}
+#header-left {
+    padding:20px;
+    display: flex;
+}
 #app-title {
     color: #FFF;
     font-family: Karla, sans-serif;
@@ -39,4 +47,6 @@ nav {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    padding: 25px 37px;
 }
+

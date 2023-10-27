@@ -1,7 +1,7 @@
 export default function Header () {
     return (
         <nav id="header-navbar">
-            <div>
+            <div id="header-left">
             <img src="./src/assets/Troll Face.png" alt="meme logo" />
             <span id="app-title" className = "bold">Chris's Meme Generator</span>
             </div>
