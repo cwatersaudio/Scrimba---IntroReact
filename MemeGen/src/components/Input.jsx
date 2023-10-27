@@ -1,13 +1,17 @@
 import MArray from '../memesData.js'
 
+let memeURL, memeHeight, memeWidth;
+
 export default function Input () {
 
 
 
     function getImage () {
-            let randIndex = Math.floor(Math.random() * (99));
-            let imageURL = MArray.data.memes[randIndex].url;
-            console.log(imageURL)
+            let randIndex = Math.floor(Math.random() * 99);
+            let randMeme = MArray.data.memes[randIndex];
+            
+            memeURL = randMeme.url;
+            console.log(memeURL)
         }
 
     
@@ -25,6 +29,10 @@ export default function Input () {
             placeholder="bottom meme"/>
             <button id="meme-button" type="button" onClick={getImage}>Get a new meme image  🖼</button>
         </form>
+        <img 
+        src={memeURL}
+        alt="meme" />
+        
         </>
     )
 }
