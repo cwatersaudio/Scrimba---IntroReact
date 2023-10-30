@@ -9,9 +9,9 @@ export default function Input () {
 
     function getImage () {
             let randIndex = Math.floor(Math.random() * 99);
-            imgURL = MArray.data.memes[randIndex].url
-            
-            setMemeURL(imgURL)
+            let randMeme = MArray.data.memes[randIndex]
+            let {name,url,width,height} = randMeme
+            setMemeURL(url)
             console.log(memeURL)
         }
 
