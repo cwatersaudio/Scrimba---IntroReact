@@ -12,7 +12,9 @@ export default function Input () {
             let randMeme = MArray.data.memes[randIndex]
             let {name,url,width,height} = randMeme
             setMemeURL(url)
-            console.log(memeURL)
+            document.getElementById("meme").style.setProperty('--meme-height',height+'px')
+            document.getElementById("meme").style.setProperty('--meme-width',width+'px')
+
         }
 
     
@@ -32,7 +34,10 @@ export default function Input () {
         </form>
         <img 
         src={memeURL}
-        alt="meme" />
+        alt="meme" 
+        className = "meme--image"
+        id="meme"
+        />
         
         </>
     )
