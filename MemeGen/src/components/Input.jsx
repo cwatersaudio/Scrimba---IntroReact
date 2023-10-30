@@ -1,16 +1,17 @@
 import MArray from '../memesData.js'
+import React from 'react'
 
-let memeURL, memeHeight, memeWidth;
+
 
 export default function Input () {
-
-
+    const [memeURL, setMemeURL] = React.useState("")
+    let imgURL, memeHeight, memeWidth;
 
     function getImage () {
             let randIndex = Math.floor(Math.random() * 99);
-            let randMeme = MArray.data.memes[randIndex];
+            imgURL = MArray.data.memes[randIndex].url
             
-            memeURL = randMeme.url;
+            setMemeURL(imgURL)
             console.log(memeURL)
         }
 
