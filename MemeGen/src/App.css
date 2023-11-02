@@ -94,6 +94,6 @@ button {
 }
 /* Meme Styling */
 .meme--image {
-    height: var(--meme-height);
-    width: var(--meme-width);
+    
+    max-width: 100%;
 }
