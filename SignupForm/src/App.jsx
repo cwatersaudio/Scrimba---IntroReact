@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import './App.css'
 
 
@@ -19,11 +19,47 @@ export default function App() {
      *    the "newsletter" checkbox, log "Thanks for signing
      *    up for our newsletter!" to the console.
      */
+    let passwordMatch = false;
+
+    const [userInfo,updateUserinfo] = React.useState({
+      email:"",
+      password:"",
+      confirmPassword:"",
+      okayToEmail: false,
+    })
     
     function handleSubmit(event) {
         event.preventDefault()
+        validatePassword(userInfo.password,userInfo.confirmPassword)
+        userInfo.okayToEmail === true && passwordMatch && console.log("Signed up!") 
+        passwordMatch && console.log("Form submitted!") 
+
+    }
+
+    function validatePassword (pass1,pass2) {
+
+      if (pass1 === pass2) {
+        console.log("Passwords match!") 
+        passwordMatch = true
+       } else {
+        console.log ("Passwords don't match!")
+        passwordMatch = false
+       }
+        
+    }
+
+    function handleChange (event) {
+      const {name,value,type,checked} = event.target
+
+      updateUserinfo(prevInfo => {
+        return {
+        ...prevInfo,
+        [name]: type==="checkbox" ? checked : value
+        }
+      })
     }
     
+    console.log(userInfo)
     return (
         <div className="form-container">
             <form className="form" onSubmit={handleSubmit}>
@@ -31,28 +67,41 @@ export default function App() {
                     type="email" 
                     placeholder="Email address"
                     className="form--input"
+                    onChange={handleChange}
+                    value={userInfo.email}
+                    name="email"
                 />
                 <input 
                     type="password" 
                     placeholder="Password"
                     className="form--input"
+                    value= {userInfo.password}
+                    onChange={handleChange}
+                    name="password"
                 />
                 <input 
                     type="password" 
                     placeholder="Confirm password"
                     className="form--input"
+                    value= {userInfo.confirmPassword}
+                    onChange={handleChange}
+                    name="confirmPassword"
                 />
                 
                 <div className="form--marketing">
                     <input
                         id="okayToEmail"
+                        onChange={handleChange}
                         type="checkbox"
+                        checked={userInfo.okayToEmail}
+                        name="okayToEmail"
                         
                     />
                     <label htmlFor="okayToEmail">I want to join the newsletter</label>
                 </div>
                 <button 
                     className="form--submit"
+                    name="submit"
                 >
                     Sign up
                 </button>
