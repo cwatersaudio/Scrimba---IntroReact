@@ -36,6 +36,17 @@ export default function Input () {
             })
             )
         }
+    
+    function handleChange (event) {
+        const {value,name} = event.target
+
+        setMeme (meme => {
+            return {
+                ...meme,
+                [name]:value
+            }
+        })
+    }
 
     
     return (
@@ -45,19 +56,33 @@ export default function Input () {
             <input 
             type="text" 
             id="meme1" 
-            placeholder="top meme"/>
+            placeholder="top meme"
+            name= "topText"
+            value={currentMeme.topText}
+            onChange={handleChange}
+            />
+            
             <input 
             type="text" 
             id="meme2"
-            placeholder="bottom meme"/>
+            placeholder="bottom meme"
+            name="bottomText"
+            value={currentMeme.bottomText}
+            onChange={handleChange}
+            />
+            
             <button id="meme-button" type="button" onClick={getImage}>Get a new meme image  🖼</button>
         </form>
-        <img 
-        src={currentMeme.randomImage}
-        alt="meme" 
-        className = "meme--image"
-        id="meme"
-        />
+        <div className="meme">
+            <img 
+            src={currentMeme.randomImage}
+            alt="meme" 
+            className = "meme--image"
+            id="meme"
+            />
+            <h2 className="meme--text top">{currentMeme.topText}</h2>
+            <h2 className="meme--text bottom">{currentMeme.bottomText}</h2>
+        </div>
         
         </>
     )
