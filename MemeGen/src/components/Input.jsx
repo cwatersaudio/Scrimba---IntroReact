@@ -35,8 +35,9 @@ export default function Input () {
     },[])
 
     function getImage () {
+            const memeArray = allMemes.data
             let randIndex = Math.floor(Math.random() * 99);
-            let randMeme = MArray.data.memes[randIndex]
+            let randMeme = memeArray.memes[randIndex]
             let {name,url,width,height} = randMeme
             setMeme(prevMeme => ({
                 ...prevMeme,
