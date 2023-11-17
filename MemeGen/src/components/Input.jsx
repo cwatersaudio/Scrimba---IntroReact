@@ -31,13 +31,13 @@ export default function Input () {
         console.log("effect ran")
         fetch("https://api.imgflip.com/get_memes")
             .then(Response => Response.json())
-            .then(data => setAllMemes(data))
+            .then(data => setAllMemes(data.data.memes))
     },[])
 
     function getImage () {
-            const memeArray = allMemes.data
+  
             let randIndex = Math.floor(Math.random() * 99);
-            let randMeme = memeArray.memes[randIndex]
+            let randMeme = allMemes[randIndex]
             let {name,url,width,height} = randMeme
             setMeme(prevMeme => ({
                 ...prevMeme,
