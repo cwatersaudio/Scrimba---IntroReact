@@ -1203,12 +1203,6 @@ function Sidebar(props) {
      * using the "\n" newline character as the divider
      */
 
-    function getTitle(content) {
-        var title = content.split("\n", 1);
-        return title;
-    }
-    getTitle(props.notes[1].body);
-
     var noteElements = props.notes.map(function (note, index) {
         return _react2.default.createElement(
             "div",
@@ -1225,7 +1219,7 @@ function Sidebar(props) {
                 _react2.default.createElement(
                     "h4",
                     { className: "text-snippet" },
-                    getTitle(note.body)
+                    note.body.split("\n")[0]
                 )
             )
         );

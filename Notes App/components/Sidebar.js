@@ -15,12 +15,7 @@ export default function Sidebar(props) {
      * using the "\n" newline character as the divider
      */
     
-    function getTitle (content) {
-        let title = content.split("\n",1)
-        return title
-    }
-getTitle(props.notes[1].body)
-    
+     
     const noteElements = props.notes.map((note, index) => (
         <div key={note.id}>
             <div
@@ -30,7 +25,7 @@ getTitle(props.notes[1].body)
                 }`}
                 onClick={() => props.setCurrentNoteId(note.id)}
             >
-                <h4 className="text-snippet">{getTitle(note.body)}</h4>
+                <h4 className="text-snippet">{note.body.split("\n")[0]}</h4>
             </div>
         </div>
     ))
