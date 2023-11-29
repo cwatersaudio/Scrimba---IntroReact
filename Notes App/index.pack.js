@@ -1006,8 +1006,13 @@ function App() {
         setCurrentNoteId(newNote.id);
     }
 
-    function checkId(current) {
-        return current !== currentNoteId;
+    function deleteNote(event, noteId) {
+        // event.stopPropagation()
+        setNotes(function (prevNotes) {
+            return prevNotes.filter(function (note) {
+                return note.id !== event.id;
+            });
+        });
     }
 
     function updateNote(text) {
@@ -1039,7 +1044,8 @@ function App() {
                 notes: notes,
                 currentNote: findCurrentNote(),
                 setCurrentNoteId: setCurrentNoteId,
-                newNote: createNewNote
+                newNote: createNewNote,
+                deleteNote: deleteNote
             }),
             currentNoteId && notes.length > 0 && _react2.default.createElement(_Editor2.default, {
                 currentNote: findCurrentNote(),
@@ -1192,20 +1198,6 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Sidebar(props) {
-    /**
-     * Challenge: Try to figure out a way to display only the 
-     * first line of note.body as the note summary in the
-     * sidebar.
-     * 
-     * Hint 1: note.body has "invisible" newline characters
-     * in the text every time there's a new line shown. E.g.
-     * the text in Note 1 is:
-     * "# Note summary\n\nBeginning of the note"
-     * 
-     * Hint 2: See if you can split the string into an array
-     * using the "\n" newline character as the divider
-     */
-
     var noteElements = props.notes.map(function (note, index) {
         return _react2.default.createElement(
             "div",
@@ -1223,6 +1215,16 @@ function Sidebar(props) {
                     "h4",
                     { className: "text-snippet" },
                     note.body.split("\n")[0]
+                ),
+                _react2.default.createElement(
+                    "button",
+                    {
+                        className: "delete-btn",
+                        onClick: function onClick() {
+                            props.deleteNote(props.currentNote);
+                        }
+                    },
+                    _react2.default.createElement("i", { className: "gg-trash trash-icon" })
                 )
             )
         );

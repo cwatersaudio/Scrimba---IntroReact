@@ -26,10 +26,14 @@ export default function App() {
         setCurrentNoteId(newNote.id)
     }
 
-    function checkId (current) {
-        return current !== currentNoteId
-    }
+
     
+    function deleteNote(event, noteId) {
+        // event.stopPropagation()
+        setNotes(prevNotes => prevNotes.filter((note)=> note.id !== event.id))
+        
+    }
+
     function updateNote(text) {
         
         let tempNotes = notes.filter(note => note.id !== currentNoteId)
@@ -60,6 +64,7 @@ export default function App() {
                     currentNote={findCurrentNote()}
                     setCurrentNoteId={setCurrentNoteId}
                     newNote={createNewNote}
+                    deleteNote={deleteNote}
                 />
                 {
                     currentNoteId && 
