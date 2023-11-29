@@ -1012,10 +1012,11 @@ function App() {
 
     function updateNote(text) {
 
-        var tempNotes = notes.filter(checkId);
-        setNotes(function (oldNotes) {
-            return [{ body: text, id: currentNoteId }].concat(_toConsumableArray(oldNotes));
+        var tempNotes = notes.filter(function (note) {
+            return note.id !== currentNoteId;
         });
+        tempNotes.unshift({ body: text, id: currentNoteId });
+        setNotes(tempNotes);
     }
 
     function findCurrentNote() {

@@ -32,9 +32,12 @@ export default function App() {
     
     function updateNote(text) {
         
-        let tempNotes = notes.filter(checkId)  
-        setNotes (oldNotes => ([{body: text, id: currentNoteId},...oldNotes]))
+        let tempNotes = notes.filter(note => note.id !== currentNoteId)
+        tempNotes.unshift({body:text, id: currentNoteId})
+        setNotes (tempNotes)
     }
+
+         
     
     function findCurrentNote() {
         return notes.find(note => {
