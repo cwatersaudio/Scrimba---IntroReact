@@ -25,13 +25,15 @@ export default function App() {
         setNotes(prevNotes => [newNote, ...prevNotes])
         setCurrentNoteId(newNote.id)
     }
+
+    function checkId (current) {
+        return current !== currentNoteId
+    }
     
     function updateNote(text) {
-        setNotes(oldNotes => oldNotes.map(oldNote => {
-            return oldNote.id === currentNoteId
-                ? { ...oldNote, body: text }
-                : oldNote
-        }))
+        
+        let tempNotes = notes.filter(checkId)  
+        setNotes (oldNotes => ([{body: text, id: currentNoteId},...oldNotes]))
     }
     
     function findCurrentNote() {
