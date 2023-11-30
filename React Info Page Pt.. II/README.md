@@ -1,1 +1,1 @@
-Sort of a warmup exercise for the last Intro to React module in scrimba.  Copied the code from the scrimba online coding platform but it doesn't work yet with Vite.
+Sort of a warmup exercise for the last Intro to React module in scrimba.  
