@@ -25,14 +25,23 @@ export default function App() {
         setNotes(prevNotes => [newNote, ...prevNotes])
         setCurrentNoteId(newNote.id)
     }
+
+
     
-    function updateNote(text) {
-        setNotes(oldNotes => oldNotes.map(oldNote => {
-            return oldNote.id === currentNoteId
-                ? { ...oldNote, body: text }
-                : oldNote
-        }))
+    function deleteNote(event, noteId) {
+        // event.stopPropagation()
+        setNotes(prevNotes => prevNotes.filter((note)=> note.id !== event.id))
+        
     }
+
+    function updateNote(text) {
+        
+        let tempNotes = notes.filter(note => note.id !== currentNoteId)
+        tempNotes.unshift({body:text, id: currentNoteId})
+        setNotes (tempNotes)
+    }
+
+         
     
     function findCurrentNote() {
         return notes.find(note => {
@@ -55,6 +64,7 @@ export default function App() {
                     currentNote={findCurrentNote()}
                     setCurrentNoteId={setCurrentNoteId}
                     newNote={createNewNote}
+                    deleteNote={deleteNote}
                 />
                 {
                     currentNoteId && 

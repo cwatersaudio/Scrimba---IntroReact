@@ -950,8 +950,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 exports.default = App;
@@ -1008,12 +1006,22 @@ function App() {
         setCurrentNoteId(newNote.id);
     }
 
-    function updateNote(text) {
-        setNotes(function (oldNotes) {
-            return oldNotes.map(function (oldNote) {
-                return oldNote.id === currentNoteId ? _extends({}, oldNote, { body: text }) : oldNote;
+    function deleteNote(event, noteId) {
+        // event.stopPropagation()
+        setNotes(function (prevNotes) {
+            return prevNotes.filter(function (note) {
+                return note.id !== event.id;
             });
         });
+    }
+
+    function updateNote(text) {
+
+        var tempNotes = notes.filter(function (note) {
+            return note.id !== currentNoteId;
+        });
+        tempNotes.unshift({ body: text, id: currentNoteId });
+        setNotes(tempNotes);
     }
 
     function findCurrentNote() {
@@ -1036,7 +1044,8 @@ function App() {
                 notes: notes,
                 currentNote: findCurrentNote(),
                 setCurrentNoteId: setCurrentNoteId,
-                newNote: createNewNote
+                newNote: createNewNote,
+                deleteNote: deleteNote
             }),
             currentNoteId && notes.length > 0 && _react2.default.createElement(_Editor2.default, {
                 currentNote: findCurrentNote(),
@@ -1189,20 +1198,6 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Sidebar(props) {
-    /**
-     * Challenge: Try to figure out a way to display only the 
-     * first line of note.body as the note summary in the
-     * sidebar.
-     * 
-     * Hint 1: note.body has "invisible" newline characters
-     * in the text every time there's a new line shown. E.g.
-     * the text in Note 1 is:
-     * "# Note summary\n\nBeginning of the note"
-     * 
-     * Hint 2: See if you can split the string into an array
-     * using the "\n" newline character as the divider
-     */
-
     var noteElements = props.notes.map(function (note, index) {
         return _react2.default.createElement(
             "div",
@@ -1219,8 +1214,17 @@ function Sidebar(props) {
                 _react2.default.createElement(
                     "h4",
                     { className: "text-snippet" },
-                    "Note ",
-                    index + 1
+                    note.body.split("\n")[0]
+                ),
+                _react2.default.createElement(
+                    "button",
+                    {
+                        className: "delete-btn",
+                        onClick: function onClick() {
+                            props.deleteNote(props.currentNote);
+                        }
+                    },
+                    _react2.default.createElement("i", { className: "gg-trash trash-icon" })
                 )
             )
         );
