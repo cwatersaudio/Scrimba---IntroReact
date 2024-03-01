@@ -6,11 +6,20 @@ import { nanoid } from 'nanoid'
 export default function App() {
 
   const [dice, setDice] = React.useState(allNewDice())
+  const [tenzies, setTenzies] = React.useState(false)
 
   function randDice() {
     return Math.ceil((Math.random() * 6))
   }
 
+  React.useEffect(() => {
+    const allHeld = dice.every(die => die.held)
+    const sameNum = dice.every(die => die.value === dice[0].value)
+    allHeld && sameNum ? setTenzies(true) : setTenzies(false)
+    console.log(tenzies)
+    console.log(sameNum)
+    console.log(allHeld)
+  }, [dice])
   function allNewDice() {
     const newDice = []
     for (let i = 1; newDice.length < 10; i++) {
@@ -44,16 +53,22 @@ export default function App() {
       return die.held ? die : { ...die, value: randDice() }
     }))
   }
+
+  function resetDice() {
+    setTenzies(false)
+    setDice(allNewDice)
+  }
   return (
 
     <main>
-      <h1>Tenzies</h1>
+      {tenzies ? <h1>You Won Tenzies!</h1> : <h1>Tenzies</h1>}
       <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div id="diceArea">
         {dice ? diceRendered : "Loading..."}
 
       </div>
-      <button type="button" className='roll--button' onClick={rollRemainingDice}>Roll Dice</button>
+      {tenzies ? <button type="button" className='roll--button' onClick={resetDice}>New Game</button>
+        : <button type="button" className='roll--button' onClick={rollRemainingDice}>Roll Dice</button>}
     </main>
 
   )
