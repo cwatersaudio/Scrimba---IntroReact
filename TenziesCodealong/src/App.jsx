@@ -16,10 +16,9 @@ export default function App() {
     const allHeld = dice.every(die => die.held)
     const sameNum = dice.every(die => die.value === dice[0].value)
     allHeld && sameNum ? setTenzies(true) : setTenzies(false)
-    console.log(tenzies)
-    console.log(sameNum)
-    console.log(allHeld)
+
   }, [dice])
+
   function allNewDice() {
     const newDice = []
     for (let i = 1; newDice.length < 10; i++) {
