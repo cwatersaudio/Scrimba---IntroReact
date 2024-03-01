@@ -3,7 +3,7 @@ import './App.css'
 import Die from './components/Die'
 import { nanoid } from 'nanoid'
 
-function App() {
+export default function App() {
 
   const [dice, setDice] = React.useState(allNewDice())
 
@@ -15,10 +15,9 @@ function App() {
     const newDice = []
     for (let i = 1; newDice.length < 10; i++) {
       const diceValue = randDice()
-      console.log(diceValue)
       newDice.push({
         value: diceValue,
-        held: true,
+        held: false,
         id: nanoid()
       })
     }
@@ -27,34 +26,23 @@ function App() {
 
   const diceRendered = dice.map(item => {
     return (
-      <Die value={item.value} key={item.id} toggleHeld={toggleHeld} held={item.held} />
+      <Die value={item.value} key={item.id} toggleHeld={() => toggleHeld(item.id)} held={item.held} id={item.id} />
     )
   })
 
   function toggleHeld(id) {
-    const diceIndexToToggle = dice.indexOf(dice.id === id)
-    setDice(oldDice => {
-      return {
-        ...oldDice,
-        diceIndexToToggle: !oldDice.id.held
-      }
-    })
-    console.log("toggled")
+    console.log(id)
+    setDice(oldDice => oldDice.map(item => {
+      return item.id === id ? {
+        ...item, held: !item.held
+      } : item
+    }))
   }
 
   function rollRemainingDice() {
-    for (const die of dice) {
-      if (!die.held) {
-        setDice(oldDice => {
-          return {
-            ...oldDice,
-            value: randDice()
-          }
-        })
-      } else {
-
-      }
-    }
+    setDice(oldDice => oldDice.map(die => {
+      return die.held ? die : { ...die, value: randDice() }
+    }))
   }
   return (
 
@@ -70,5 +58,3 @@ function App() {
 
   )
 }
-
-export default App
