@@ -10,6 +10,10 @@ export default function App() {
   const [dice, setDice] = React.useState(allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
 
+  const buttonRef = React.useRef(null)
+  const dieRef = React.useRef(null)
+
+
   function randDice() {
     return Math.ceil((Math.random() * 6))
   }
@@ -21,13 +25,15 @@ export default function App() {
 
   }, [dice])
 
+
+
   function allNewDice() {
     const newDice = []
     for (let i = 1; newDice.length < 10; i++) {
       const diceValue = randDice()
       newDice.push({
         value: diceValue,
-        held: false,
+        held: true,
         id: nanoid()
       })
     }
@@ -36,7 +42,7 @@ export default function App() {
 
   const diceRendered = dice.map(item => {
     return (
-      <Die value={item.value} key={item.id} toggleHeld={() => toggleHeld(item.id)} held={item.held} id={item.id} />
+      <Die dieRef={dieRef} value={item.value} key={item.id} toggleHeld={() => toggleHeld(item.id)} held={item.held} id={item.id} />
     )
   })
 
@@ -53,11 +59,18 @@ export default function App() {
     setDice(oldDice => oldDice.map(die => {
       return die.held ? die : { ...die, value: randDice() }
     }))
+    rollTrigger()
+
   }
 
   function resetDice() {
     setTenzies(false)
     setDice(allNewDice)
+  }
+
+  function rollTrigger() {
+
+    dieRef.current.click()
   }
   return (
 
@@ -68,8 +81,8 @@ export default function App() {
         {dice ? diceRendered : "Loading..."}
 
       </div>
-      {tenzies ? <button type="button" className='roll--button' onClick={resetDice}>New Game</button>
-        : <button type="button" className='roll--button' onClick={rollRemainingDice}>Roll Dice</button>}
+      {tenzies ? <button ref={buttonRef} type="button" className='roll--button' onClick={resetDice}>New Game</button>
+        : <button ref={buttonRef} type="button" className='roll--button' onClick={rollRemainingDice}>Roll Dice</button>}
     </main>
 
   )
