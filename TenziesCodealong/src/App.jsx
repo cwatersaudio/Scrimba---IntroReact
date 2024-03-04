@@ -10,8 +10,8 @@ export default function App() {
   const [dice, setDice] = React.useState(allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
 
-  const buttonRef = React.useRef(null)
-  const dieRef = React.useRef(null)
+  const buttonRef = React.useRef(null) //not sure about this
+  const dieRef = React.useRef(null) //not sure 
 
 
   function randDice() {
@@ -33,7 +33,7 @@ export default function App() {
       const diceValue = randDice()
       newDice.push({
         value: diceValue,
-        held: true,
+        held: false,
         id: nanoid()
       })
     }
@@ -68,7 +68,7 @@ export default function App() {
     setDice(allNewDice)
   }
 
-  function rollTrigger() {
+  function rollTrigger() { //not sure about this
 
     dieRef.current.click()
   }
@@ -82,7 +82,7 @@ export default function App() {
 
       </div>
       {tenzies ? <button ref={buttonRef} type="button" className='roll--button' onClick={resetDice}>New Game</button>
-        : <button ref={buttonRef} type="button" className='roll--button' onClick={rollRemainingDice}>Roll Dice</button>}
+        : <button ref={buttonRef} type="button" className='roll--button' onClick={rollTrigger}>Roll Dice</button>}
     </main>
 
   )
