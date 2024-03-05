@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import Die from './components/Die'
 import { nanoid } from 'nanoid'
-import Dice from 'react-dice-roll';
+import Dice from '../react-dice-roll-master/src/index';
 
 
 export default function App() {
@@ -10,8 +10,8 @@ export default function App() {
   const [dice, setDice] = React.useState(allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
 
-  const buttonRef = React.useRef(null) //not sure about this
-  const dieRef = React.useRef(null) //not sure 
+  const diceRef = React.useRef(null)
+
 
 
   function randDice() {
@@ -41,9 +41,24 @@ export default function App() {
   }
 
   const diceRendered = dice.map(item => {
+    console.log('dice updated')
     return (
-      <Die dieRef={dieRef} value={item.value} key={item.id} toggleHeld={() => toggleHeld(item.id)} held={item.held} id={item.id} />
+      // <Die trigger={rollTrigger} value={item.value} key={item.id} toggleHeld={() => toggleHeld(item.id)} held={item.held} id={item.id} />
+      <Dice
+        size="36"
+        key={item.id}
+        faceBg={item.held ? "red" : "none"}
+        cheatValue={item.value}
+        onClick={() => toggleHeld(item.id)}
+        held={item.held}
+        id={item.id}
+        defaultValue={item.value}
+        triggers={''}
+        ref={diceRef}
+      />
+
     )
+
   })
 
   function toggleHeld(id) {
@@ -56,11 +71,11 @@ export default function App() {
   }
 
   function rollRemainingDice() {
+    console.log('rolled')
     setDice(oldDice => oldDice.map(die => {
       return die.held ? die : { ...die, value: randDice() }
     }))
-    rollTrigger()
-
+    diceRef.current.rollDice()
   }
 
   function resetDice() {
@@ -68,10 +83,7 @@ export default function App() {
     setDice(allNewDice)
   }
 
-  function rollTrigger() { //not sure about this
 
-    dieRef.current.click()
-  }
   return (
 
     <main>
@@ -81,8 +93,8 @@ export default function App() {
         {dice ? diceRendered : "Loading..."}
 
       </div>
-      {tenzies ? <button ref={buttonRef} type="button" className='roll--button' onClick={resetDice}>New Game</button>
-        : <button ref={buttonRef} type="button" className='roll--button' onClick={rollTrigger}>Roll Dice</button>}
+      {tenzies ? <button type="button" className='roll--button' onClick={resetDice}>New Game</button>
+        : <button type="button" className='roll--button' onClick={rollRemainingDice}>Roll Dice</button>}
     </main>
 
   )
