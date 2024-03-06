@@ -53,19 +53,21 @@ export default function App() {
     console.log('dice updated')
     return (
       // <Die trigger={rollTrigger} value={item.value} key={item.id} toggleHeld={() => toggleHeld(item.id)} held={item.held} id={item.id} />
+      <div className='die--container' onClick={() => toggleHeld(item.id)}>
+        <Dice
+          size="36"
+          key={item.id}
+          faceBg={item.held ? "red" : "none"}
+          cheatValue={item.value}
+          onClick={() => toggleHeld(item.id)}
+          held={item.held}
+          id={item.id}
+          defaultValue={item.value}
+          triggers={''}
+          ref={diceRefs[index]}
+        />
+      </div>
 
-      <Dice
-        size="36"
-        key={item.id}
-        faceBg={item.held ? "red" : "none"}
-        cheatValue={item.value}
-        onClick={() => toggleHeld(item.id)}
-        held={item.held}
-        id={item.id}
-        defaultValue={item.value}
-        triggers={''}
-        ref={diceRefs[index]}
-      />
 
     )
 
@@ -89,9 +91,13 @@ export default function App() {
   }
 
   function rollAllDice() {
-    diceRefs.map(item => {
-      console.log(item)
-      item.current.rollDice()
+    const diceToRoll = dice.map((item, index) => {
+      if (!item.held) { return index }
+    })
+    diceRefs.map((item, index) => {
+      if (index === diceToRoll[index]) {
+        item.current.rollDice()
+      }
     })
   }
 
