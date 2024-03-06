@@ -10,8 +10,17 @@ export default function App() {
   const [dice, setDice] = React.useState(allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
 
-  const diceRef = React.useRef(null)
+  const diceRefs = []
 
+  const createDiceRefs = () => {
+    for (let i = 0; i < 10; i++) {
+      let diceRef = React.useRef(null)
+      diceRefs.push(diceRef)
+    }
+  }
+
+
+  createDiceRefs()
 
 
   function randDice() {
@@ -40,10 +49,11 @@ export default function App() {
     return newDice
   }
 
-  const diceRendered = dice.map(item => {
+  const diceRendered = dice.map((item, index) => {
     console.log('dice updated')
     return (
       // <Die trigger={rollTrigger} value={item.value} key={item.id} toggleHeld={() => toggleHeld(item.id)} held={item.held} id={item.id} />
+
       <Dice
         size="36"
         key={item.id}
@@ -54,7 +64,7 @@ export default function App() {
         id={item.id}
         defaultValue={item.value}
         triggers={''}
-        ref={diceRef}
+        ref={diceRefs[index]}
       />
 
     )
@@ -75,7 +85,14 @@ export default function App() {
     setDice(oldDice => oldDice.map(die => {
       return die.held ? die : { ...die, value: randDice() }
     }))
-    diceRef.current.rollDice()
+    rollAllDice()
+  }
+
+  function rollAllDice() {
+    diceRefs.map(item => {
+      console.log(item)
+      item.current.rollDice()
+    })
   }
 
   function resetDice() {
