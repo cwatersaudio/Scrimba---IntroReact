@@ -11,6 +11,7 @@ export default function App() {
   const [tenzies, setTenzies] = React.useState(false)
 
   const diceRefs = []
+  let diceValues = []
 
   const createDiceRefs = () => {
     for (let i = 0; i < 10; i++) {
@@ -31,14 +32,16 @@ export default function App() {
     const allHeld = dice.every(die => die.held)
     const sameNum = dice.every(die => die.value === dice[0].value)
     allHeld && sameNum ? setTenzies(true) : setTenzies(false)
+    diceValues = dice.map(die => die.value)
 
   }, [dice])
 
   React.useLayoutEffect(() => {
+    console.log('layout ran')
     rollAllDice()
 
 
-  }, [dice])
+  }, [diceValues])
 
   function allNewDice() {
     const newDice = []
