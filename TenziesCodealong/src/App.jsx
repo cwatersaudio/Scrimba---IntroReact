@@ -3,6 +3,7 @@ import './App.css'
 import Die from './components/Die'
 import { nanoid } from 'nanoid'
 import Dice from 'react-dice-roll';
+import Confetti from 'react-confetti'
 
 
 export default function App() {
@@ -123,6 +124,7 @@ export default function App() {
   return (
 
     <main>
+      {tenzies ? <Confetti /> : null}
       {tenzies ? <h1>You Won Tenzies!</h1> : <h1>Tenzies</h1>}
       <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div id="diceArea">
