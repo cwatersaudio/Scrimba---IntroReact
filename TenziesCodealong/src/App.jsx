@@ -34,7 +34,11 @@ export default function App() {
 
   }, [dice])
 
+  React.useLayoutEffect(() => {
+    rollAllDice()
 
+
+  }, [dice])
 
   function allNewDice() {
     const newDice = []
@@ -87,18 +91,24 @@ export default function App() {
     setDice(oldDice => oldDice.map(die => {
       return die.held ? die : { ...die, value: randDice() }
     }))
-    rollAllDice()
+    // rollAllDice()
   }
 
   function rollAllDice() {
-    const diceToRoll = dice.map((item, index) => {
-      if (!item.held) { return index }
-    })
-    diceRefs.map((item, index) => {
-      if (index === diceToRoll[index]) {
-        item.current.rollDice()
+    // const diceToRoll = dice.map((item, index) => {
+    //   if (!item.held) { return index }
+    // })
+    // diceRefs.map((item, index) => {
+    //   if (index === diceToRoll[index]) {
+    //     item.current.rollDice()
+    //   }
+    // })
+
+    diceRefs.forEach((ref, index) => {
+      if (!dice[index].held) {
+        ref.current.rollDice();
       }
-    })
+    });
   }
 
   function resetDice() {
