@@ -14,7 +14,6 @@ export default function App() {
 
   const diceRefs = []
 
-  console.log(diceValues)
   const createDiceRefs = () => {
     for (let i = 0; i < 10; i++) {
       let diceRef = React.useRef(null)
@@ -35,14 +34,12 @@ export default function App() {
     const sameNum = dice.every(die => die.value === dice[0].value)
     allHeld && sameNum ? setTenzies(true) : setTenzies(false)
     diceValues = dice.map(die => {
-      console.log(die.value)
       return die.value
     })
 
   }, [dice])
 
   React.useLayoutEffect(() => {
-    console.log('layout ran')
     rollAllDice()
 
 
@@ -66,7 +63,6 @@ export default function App() {
   }
 
   const diceRendered = dice.map((item, index) => {
-    console.log('dice updated')
     return (
       // <Die trigger={rollTrigger} value={item.value} key={item.id} toggleHeld={() => toggleHeld(item.id)} held={item.held} id={item.id} />
       <div className='die--container' onClick={() => toggleHeld(item.id)}>
@@ -90,7 +86,6 @@ export default function App() {
   })
 
   function toggleHeld(id) {
-    console.log(id)
     setDice(oldDice => oldDice.map(item => {
       return item.id === id ? {
         ...item, held: !item.held
@@ -99,7 +94,6 @@ export default function App() {
   }
 
   function rollRemainingDice() {
-    console.log('rolled')
     setDice(oldDice => oldDice.map(die => {
       return die.held ? die : { ...die, value: randDice() }
     }))
