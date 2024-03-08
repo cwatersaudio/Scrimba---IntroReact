@@ -46,7 +46,11 @@ export default function App() {
     rollAllDice()
 
 
-  }, [dice.map(dice => dice.value)])
+  }, [JSON.stringify(dice.map(die => {
+    return die.value
+  })
+  )
+  ])
 
   function allNewDice() {
     const newDice = []
