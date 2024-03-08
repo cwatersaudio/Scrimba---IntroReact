@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid'
 import Dice from 'react-dice-roll';
 import Confetti from 'react-confetti'
 
+let diceValues
 
 export default function App() {
 
@@ -12,8 +13,8 @@ export default function App() {
   const [tenzies, setTenzies] = React.useState(false)
 
   const diceRefs = []
-  let diceValues = []
 
+  console.log(diceValues)
   const createDiceRefs = () => {
     for (let i = 0; i < 10; i++) {
       let diceRef = React.useRef(null)
@@ -33,7 +34,10 @@ export default function App() {
     const allHeld = dice.every(die => die.held)
     const sameNum = dice.every(die => die.value === dice[0].value)
     allHeld && sameNum ? setTenzies(true) : setTenzies(false)
-    diceValues = dice.map(die => die.value)
+    diceValues = dice.map(die => {
+      console.log(die.value)
+      return die.value
+    })
 
   }, [dice])
 
@@ -42,7 +46,7 @@ export default function App() {
     rollAllDice()
 
 
-  }, [diceValues])
+  }, [dice])
 
   function allNewDice() {
     const newDice = []
@@ -99,14 +103,6 @@ export default function App() {
   }
 
   function rollAllDice() {
-    // const diceToRoll = dice.map((item, index) => {
-    //   if (!item.held) { return index }
-    // })
-    // diceRefs.map((item, index) => {
-    //   if (index === diceToRoll[index]) {
-    //     item.current.rollDice()
-    //   }
-    // })
 
     diceRefs.forEach((ref, index) => {
       if (!dice[index].held) {
