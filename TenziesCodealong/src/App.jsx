@@ -46,7 +46,7 @@ export default function App() {
     rollAllDice()
 
 
-  }, [dice])
+  }, [dice.map(dice => dice.value)])
 
   function allNewDice() {
     const newDice = []
@@ -69,7 +69,7 @@ export default function App() {
         <Dice
           size="36"
           key={item.id}
-          faceBg={item.held ? "red" : "none"}
+          faceBg={item.held ? "red" : "white"}
           cheatValue={item.value}
           onClick={() => toggleHeld(item.id)}
           held={item.held}
