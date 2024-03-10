@@ -1,45 +1,41 @@
 import React from 'react'
 import './App.css'
-import Die from './components/Die'
 import { nanoid } from 'nanoid'
 import Dice from 'react-dice-roll';
 import Confetti from 'react-confetti'
 
-let diceValues
 
 export default function App() {
 
-  const [dice, setDice] = React.useState(allNewDice())
+  const [dice, setDice] = React.useState(allNewDice()) //all the dice values and 'held' status
   const [tenzies, setTenzies] = React.useState(false)
 
   const diceRefs = []
 
-  const createDiceRefs = () => {
+  const createDiceRefs = () => { //creates 10 refs to the animated dice so that the rollDice() methods can be exposed
     for (let i = 0; i < 10; i++) {
-      let diceRef = React.useRef(null)
+      const diceRef = React.useRef(null)
       diceRefs.push(diceRef)
     }
   }
 
 
-  createDiceRefs()
+  createDiceRefs() //calls above function; is there a better place to put this?  Uses hooks so needed to be in root level?
 
 
   function randDice() {
     return Math.ceil((Math.random() * 6))
   }
 
-  React.useEffect(() => {
+  React.useEffect(() => { //checks whether Tenzies has happened (if first value is same as all values and if all are held)
     const allHeld = dice.every(die => die.held)
     const sameNum = dice.every(die => die.value === dice[0].value)
     allHeld && sameNum ? setTenzies(true) : setTenzies(false)
-    diceValues = dice.map(die => {
-      return die.value
-    })
+
 
   }, [dice])
 
-  React.useLayoutEffect(() => {
+  React.useLayoutEffect(() => { //rolls dice after each change in dice value
     rollAllDice()
 
 
@@ -62,20 +58,19 @@ export default function App() {
     return newDice
   }
 
-  const diceRendered = dice.map((item, index) => {
+  const diceRendered = dice.map((item, index) => { //renders the dice
     return (
-      // <Die trigger={rollTrigger} value={item.value} key={item.id} toggleHeld={() => toggleHeld(item.id)} held={item.held} id={item.id} />
       <div className='die--container' onClick={() => toggleHeld(item.id)}>
         <Dice
           size="36"
           key={item.id}
-          faceBg={item.held ? "red" : "white"}
+          faceBg={item.held ? "red" : "white"} //color change based on held status
           cheatValue={item.value}
           onClick={() => toggleHeld(item.id)}
           held={item.held}
           id={item.id}
           defaultValue={item.value}
-          triggers={''}
+          triggers={''} //turns off default click to roll functionality
           ref={diceRefs[index]}
         />
       </div>
@@ -97,7 +92,6 @@ export default function App() {
     setDice(oldDice => oldDice.map(die => {
       return die.held ? die : { ...die, value: randDice() }
     }))
-    // rollAllDice()
   }
 
   function rollAllDice() {
